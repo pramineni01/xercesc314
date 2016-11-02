@@ -169,7 +169,7 @@ public :
       , DuplicateAnyAttribute              = 152
       , AnyAttributeBeforeAttribute        = 153
       , E_HighBounds                       = 154
-      , F_LowBounds                        = 155   // rp - this is the actual fatal low bounds
+      , F_LowBounds                        = 155    // rp - this is the actual fatal low bounds
       , EntityExpansionLimitExceeded       = 156
       , ExpectedCommentOrCDATA             = 157
       , ExpectedAttrName                   = 158
@@ -307,6 +307,7 @@ public :
 
     static bool isFatal(const XMLErrs::Codes toCheck)
     {
+        return ((toCheck >= F_LowBounds) && (toCheck <= F_HighBounds));
         return ((toCheck >= F_LowBounds1) && (toCheck <= F_HighBounds));
     }
 

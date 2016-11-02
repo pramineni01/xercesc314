@@ -962,8 +962,8 @@ void IGXMLScanner::scanEndTag(bool& gotData)
         topElem = fElemStack.topElement();
         elemName = topElem->fThisElement->getFullName();
     }
-    /*  rp - modifying behavior to accommodate DIIS requirement
-     *  if (!fReaderMgr.skippedStringLong(elemName))
+    /*  rp - start - modifying behavior to accommodate DIIS requirement
+    *   if (!fReaderMgr.skippedStringLong(elemName))
     {
         emitError
         (
@@ -978,6 +978,7 @@ void IGXMLScanner::scanEndTag(bool& gotData)
     // Make sure we are back on the same reader as where we started
     if (topElem->fReaderNum != fReaderMgr.getCurrentReaderNum())
         emitError(XMLErrs::PartialTagMarkupError);
+   
     * rp - end - modifying behavior to accommodate DIIS requirement
     */
     // rp - start - New behavior
@@ -989,7 +990,7 @@ void IGXMLScanner::scanEndTag(bool& gotData)
         elemName = topElem->fThisElement->getFullName();
     }
     // rp - end - New behavior
-
+ 
     // Skip optional whitespace
     fReaderMgr.skipPastSpaces();
 
@@ -1258,7 +1259,7 @@ void IGXMLScanner::scanDocTypeDecl()
     {
         emitError(XMLErrs::ExpectedWhitespace);
 
-        // Just skip the Doctype declaration and return
+        // Just spip the Doctype declaration and return
         fReaderMgr.skipPastChar(chCloseAngle);
         return;
     }

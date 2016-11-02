@@ -27,6 +27,7 @@
 #include <xercesc/sax2/Attributes.hpp>
 #include <xercesc/sax/SAXParseException.hpp>
 #include <xercesc/sax/SAXException.hpp>
+#include <xercesc/util/XMLString.hpp>
 
 // ---------------------------------------------------------------------------
 //  XSerializerHandlers: Constructors and Destructor
@@ -49,10 +50,17 @@ XSerializerHandlers::~XSerializerHandlers()
 //  XSerializerHandlers: Implementation of the SAX DocumentHandler interface
 // ---------------------------------------------------------------------------
 void XSerializerHandlers::startElement(const XMLCh* const /*uri*/
-                                   , const XMLCh* const /*localname*/
+                                   , const XMLCh* const localname
                                    , const XMLCh* const /*qname*/
                                    , const Attributes& attrs)
 {
+    char* start_element = XMLString::transcode(localname);
+    XERCES_STD_QUALIFIER cout << start_element << '\n';
+    XMLString::release( &start_element );
+    if( start_element == NULL )
+      XERCES_STD_QUALIFIER cout << "TRUE" << '\n';
+    else
+      XERCES_STD_QUALIFIER cout << "FALSE" << '\n';
     fElementCount++;
     fAttrCount += attrs.getLength();
 }

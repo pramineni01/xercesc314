@@ -356,15 +356,15 @@ void XMLScanner::scanDocument(  const   XMLCh* const    systemId)
                 // emit the error directly
                 // lazy bypass ... since all MalformedURLException are fatal, no need to check the type
                 MalformedURLException e(__FILE__, __LINE__, XMLExcepts::URL_MalformedURL, fMemoryManager);
-                /* rp -commenting this to disable te fatal error
-                 * fInException = true;
+                /*  rp - commenting this to disable the fatal error
+                fInException = true;
                 emitError
                 (
                     XMLErrs::XMLException_Fatal
                     , e.getCode()
                     , e.getMessage()
                 );
-                return;*/
+                return; */
             }
         }
     }
